@@ -5,7 +5,7 @@
 using namespace sc2;
 using namespace std;
 
-#include "Bot.hpp"
+#include "Bot.h"
 
 int main(int argc, char* argv[]) {
     Coordinator coordinator;

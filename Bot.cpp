@@ -1,4 +1,4 @@
-#include "Bot.hpp"
+#include "Bot.h"
 
 //! Called when a game is started after a load. Fast restarting will not call this.
 void Bot::OnGameFullStart() {
