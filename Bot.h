@@ -1,12 +1,16 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 #include <sc2api/sc2_api.h>
 
 using namespace sc2;
 using namespace std;
 
 class Bot : public Agent {
+private:
+    
+
 public:
     virtual void OnGameFullStart();
     virtual void OnGameStart();
