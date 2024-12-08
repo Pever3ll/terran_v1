@@ -17,7 +17,7 @@ void Bot::OnGameEnd() {
 //! In realtime this function gets called as often as possible after request/responses are received from the game
 //! gathering observation state.
 void Bot::OnStep() {
-    cout << Observation()->GetGameLoop() << std::endl;
+    //cout << Observation()->GetGameLoop() << std::endl;
 }
 
 //! Called whenever one of the player's units has been destroyed.
@@ -32,7 +32,16 @@ void Bot::OnNeutralUnitCreated(const Unit*) {
 
 //! Called when a Unit has been created by the player.
 //!< \param unit The created unit.
-void Bot::OnUnitCreated(const Unit*) {
+void Bot::OnUnitCreated(const Unit* unit) {
+    UnitWrapper* u = new UnitWrapper(unit);
+    u->addTo(my_units[unit->unit_type]);
+
+    for (auto i : my_units) {
+        cout << i.first << ":" << endl;
+        for (auto j : i.second) {
+            cout << "\t" << "x: " << j->pos.x << " y: " << j->pos.y << " z: " << j->pos.z << endl;
+        }
+    }
 }
 
 //! Called when a unit becomes idle, this will only occur as an event so will only be called when the unit becomes

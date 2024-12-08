@@ -3,13 +3,18 @@
 #include <iostream>
 #include <vector>
 #include <sc2api/sc2_api.h>
+#include <unordered_map>
+
+#include "UnitWrapper.h"
 
 using namespace sc2;
 using namespace std;
 
+
 class Bot : public Agent {
 private:
-    
+    unordered_map<int, vector<UnitWrapper*>> my_units;
+    vector<UnitWrapper*> vec;
 
 public:
     virtual void OnGameFullStart();
@@ -18,7 +23,7 @@ public:
     virtual void OnStep();
     virtual void OnUnitDestroyed(const Unit*);
     virtual void OnNeutralUnitCreated(const Unit*);
-    virtual void OnUnitCreated(const Unit*);
+    virtual void OnUnitCreated(const Unit* unit);
     virtual void OnUnitIdle(const Unit* unit) final;
     virtual void OnUpgradeCompleted(UpgradeID);
     virtual void OnBuildingConstructionComplete(const Unit*);
