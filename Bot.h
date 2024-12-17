@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "UnitWrapper.h"
+#include "SCV.h"
 
 using namespace sc2;
 using namespace std;
@@ -34,3 +35,5 @@ public:
     virtual void OnError(const std::vector<ClientError>& client_errors,
                          const std::vector<std::string>& protocol_errors);
 };
+
+UnitWrapper* createUnit(const Unit* u, UNIT_TYPEID type);

@@ -33,7 +33,8 @@ void Bot::OnNeutralUnitCreated(const Unit*) {
 //! Called when a Unit has been created by the player.
 //!< \param unit The created unit.
 void Bot::OnUnitCreated(const Unit* unit) {
-    UnitWrapper* u = new UnitWrapper(unit);
+    UnitWrapper* u = createUnit(unit, unit->unit_type);
+
     u->addTo(my_units[unit->unit_type]);
 
     for (auto i : my_units) {
@@ -95,4 +96,16 @@ void Bot::OnUnitEnterVision(const Unit*) {
 //! Called for various errors the library can encounter. See ClientError enum for possible errors.
 void Bot::OnError(const std::vector<ClientError>& client_errors,
     const std::vector<std::string> & protocol_errors = {}) {
+}
+
+UnitWrapper* createUnit(const Unit* u, UNIT_TYPEID type) {
+    switch (type) {
+    default:
+        return new UnitWrapper(u);
+        break;
+    case UNIT_TYPEID::TERRAN_SCV:
+        return new SCV(u);
+        break;
+    }
+
 }
